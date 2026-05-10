@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "lint": "eslint .",
     "type-check": "vue-tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
