@@ -16,7 +16,7 @@ import Map from 'ol/Map';
  */
 export function zoomToTrack(map: Map, source: VectorSource<OlFeature<OlGeometry>>) {
   const extent = source.getExtent();
-  if (!isEmpty(extent)) {
+  if (extent !== null && !isEmpty(extent)) {
     // First pass: animate to the correct bounding box
     map.getView().fit(extent, { padding: [50, 50, 50, 50], maxZoom: 17, duration: 1000 });
     // Second pass: minor corrective fit after layout settles

@@ -12,6 +12,7 @@
     "type-check": "npm run type-check --workspaces --if-present"
   },
   "devDependencies": {
+    "@types/node": "^25.6.2",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.7.0",
     "jsdom": "^26.1.0",
