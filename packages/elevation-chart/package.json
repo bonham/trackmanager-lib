@@ -1,0 +1,29 @@
+{
+  "name": "@la-rampa/elevation-chart",
+  "version": "0.1.0",
+  "description": "Interactive Vue 3 elevation profile chart with zoom, pan, touch gestures, and CursorSync integration",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@la-rampa/elevation-cursor-sync": "0.1.0"
+  },
+  "peerDependencies": {
+    "chart.js": "^4.5.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.0.6",
+    "vue-tsc": "^3.0.4",
+    "typescript": "^5.9.3"
+  }
+}

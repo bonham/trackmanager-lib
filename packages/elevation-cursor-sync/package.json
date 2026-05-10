@@ -1,0 +1,24 @@
+{
+  "name": "@la-rampa/elevation-cursor-sync",
+  "version": "0.1.0",
+  "description": "Distance-based cursor synchronisation composable for Vue 3 track visualisation components",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "vite": "^7.0.6",
+    "vue-tsc": "^3.0.4",
+    "typescript": "^5.9.3"
+  }
+}
