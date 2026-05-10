@@ -1,4 +1,4 @@
-# @la-rampa/elevation-cursor-sync
+# @trackmanager-lib/elevation-cursor-sync
 
 Distance-based cursor synchronisation composable for Vue 3 track visualisation.
 
@@ -7,7 +7,7 @@ One `CursorSync` instance is shared between all components (map, elevation chart
 ## Installation
 
 ```bash
-npm install @la-rampa/elevation-cursor-sync
+npm install @trackmanager-lib/elevation-cursor-sync
 ```
 
 **Peer dependencies:** `vue ^3.5`
@@ -24,10 +24,10 @@ npm install @la-rampa/elevation-cursor-sync
 
 ```ts
 interface TrackPoint {
-  distance: number // cumulative metres from track start (monotonically increasing)
-  elevation: number // metres above sea level
-  lon: number // WGS-84 longitude
-  lat: number // WGS-84 latitude
+  distance: number; // cumulative metres from track start (monotonically increasing)
+  elevation: number; // metres above sea level
+  lon: number; // WGS-84 longitude
+  lat: number; // WGS-84 latitude
 }
 ```
 
@@ -35,10 +35,10 @@ interface TrackPoint {
 
 ```ts
 interface CursorSync {
-  distance: Readonly<Ref<number | null>> // current cursor distance
-  nearestIndex: Readonly<ComputedRef<number | null>> // index into the points array
-  setByDistance(d: number): void
-  clear(): void
+  distance: Readonly<Ref<number | null>>; // current cursor distance
+  nearestIndex: Readonly<ComputedRef<number | null>>; // index into the points array
+  setByDistance(d: number): void;
+  clear(): void;
 }
 ```
 
@@ -47,10 +47,10 @@ interface CursorSync {
 Creates a `CursorSync` instance.
 
 ```ts
-import { useCursorSync } from '@la-rampa/elevation-cursor-sync'
+import { useCursorSync } from "@trackmanager-lib/elevation-cursor-sync";
 
 // In App.vue setup:
-const cursor = useCursorSync(trackPoints) // trackPoints: ComputedRef<TrackPoint[]>
+const cursor = useCursorSync(trackPoints); // trackPoints: ComputedRef<TrackPoint[]>
 // Pass to children:
 // <ElevationChart :cursor="cursor" ... />
 // <MapView        :cursor="cursor" ... />
@@ -61,10 +61,10 @@ const cursor = useCursorSync(trackPoints) // trackPoints: ComputedRef<TrackPoint
 Maps the cursor index to a 1-based climb/interval ID, or `null` when outside all intervals.
 
 ```ts
-import { cursorToInterval } from '@la-rampa/elevation-cursor-sync'
+import { cursorToInterval } from "@trackmanager-lib/elevation-cursor-sync";
 
 // slopeIntervals: Ref<[startIdx, endIdx][]>
-const activeInterval = cursorToInterval(cursor, slopeIntervals)
+const activeInterval = cursorToInterval(cursor, slopeIntervals);
 // activeInterval.value === 2 → cursor is inside the second climb
 ```
 
@@ -72,9 +72,12 @@ const activeInterval = cursorToInterval(cursor, slopeIntervals)
 
 ```vue
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useCursorSync, cursorToInterval } from '@la-rampa/elevation-cursor-sync'
-import type { TrackPoint } from '@la-rampa/elevation-cursor-sync'
+import { computed } from "vue";
+import {
+  useCursorSync,
+  cursorToInterval,
+} from "@trackmanager-lib/elevation-cursor-sync";
+import type { TrackPoint } from "@trackmanager-lib/elevation-cursor-sync";
 
 const trackPoints = computed<TrackPoint[]>(() =>
   mySegment.map((p) => ({
@@ -83,10 +86,10 @@ const trackPoints = computed<TrackPoint[]>(() =>
     lon: p.lon,
     lat: p.lat,
   })),
-)
+);
 
-const cursor = useCursorSync(trackPoints)
-const activeClimbId = cursorToInterval(cursor, climbIntervals)
+const cursor = useCursorSync(trackPoints);
+const activeClimbId = cursorToInterval(cursor, climbIntervals);
 </script>
 
 <template>

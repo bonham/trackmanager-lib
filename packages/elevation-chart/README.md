@@ -1,13 +1,13 @@
-# @la-rampa/elevation-chart
+# @trackmanager-lib/elevation-chart
 
 Interactive Vue 3 elevation profile chart with zoom, pan, two-finger pinch, and CursorSync integration.
 
-Built on [Chart.js 4](https://www.chartjs.org/) with a fully custom interaction layer. Displays a distance/elevation line and an optional coloured overlay (e.g. detected climbs). Hover position is shared with other components via `@la-rampa/elevation-cursor-sync`.
+Built on [Chart.js 4](https://www.chartjs.org/) with a fully custom interaction layer. Displays a distance/elevation line and an optional coloured overlay (e.g. detected climbs). Hover position is shared with other components via `@trackmanager-lib/elevation-cursor-sync`.
 
 ## Installation
 
 ```bash
-npm install @la-rampa/elevation-chart @la-rampa/elevation-cursor-sync
+npm install @trackmanager-lib/elevation-chart @trackmanager-lib/elevation-cursor-sync
 ```
 
 **Peer dependencies:** `vue ^3.5`, `chart.js ^4.5`
@@ -18,16 +18,20 @@ npm install @la-rampa/elevation-chart @la-rampa/elevation-cursor-sync
 
 ```vue
 <script setup lang="ts">
-import { ElevationChart } from '@la-rampa/elevation-chart'
-import { useCursorSync } from '@la-rampa/elevation-cursor-sync'
-import type { TrackPoint } from '@la-rampa/elevation-cursor-sync'
+import { ElevationChart } from '@trackmanager-lib/elevation-chart'
+import { useCursorSync } from '@trackmanager-lib/elevation-cursor-sync'
+import type { TrackPoint } from '@trackmanager-lib/elevation-cursor-sync'
 
 const trackPoints: TrackPoint[] = /* ... equidistant, sorted by distance */
 const cursor = useCursorSync(trackPoints)
 </script>
 
 <template>
-  <ElevationChart :points="trackPoints" :overlay-intervals="climbIntervals" :cursor="cursor" />
+  <ElevationChart
+    :points="trackPoints"
+    :overlay-intervals="climbIntervals"
+    :cursor="cursor"
+  />
 </template>
 ```
 
@@ -63,7 +67,7 @@ import {
   panEventHandler, // drag pan handler factory
   touchEventHandler, // touch pinch handler factory
   calcXPosition, // clientX → chart x-axis value
-} from '@la-rampa/elevation-chart'
+} from "@trackmanager-lib/elevation-chart";
 ```
 
 ### `stretchInterval(i_start, i_end, mid, factor, I_min?, I_max?, minLength?)`
@@ -71,19 +75,19 @@ import {
 Stretches or shrinks `[i_start, i_end]` around `mid` by `factor`. Result is clamped to `[I_min, I_max]` and will not shrink below `minLength`.
 
 ```ts
-import { stretchInterval } from '@la-rampa/elevation-chart'
+import { stretchInterval } from "@trackmanager-lib/elevation-chart";
 
-const { start, end } = stretchInterval(0, 100, 50, 0.5)
+const { start, end } = stretchInterval(0, 100, 50, 0.5);
 // → { start: 25, end: 75 }  (zoom-in by 2×, centred at 50)
 ```
 
 ### `ZoomPanState`
 
 ```ts
-import { ZoomPanState } from '@la-rampa/elevation-chart'
+import { ZoomPanState } from "@trackmanager-lib/elevation-chart";
 
-const zs = new ZoomPanState(0.001, { start: 0, end: points.length - 1 })
-zs.zoomTransformation(event.deltaY, xPosition)
-const { start, end } = zs.getTransformedInterval()
+const zs = new ZoomPanState(0.001, { start: 0, end: points.length - 1 });
+zs.zoomTransformation(event.deltaY, xPosition);
+const { start, end } = zs.getTransformedInterval();
 // → set chart x-axis min/max
 ```
