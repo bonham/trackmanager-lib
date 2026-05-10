@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { TrackPointIndex } from '@trackmanager-lib/track-map-utils'
+import { TrackPointIndex } from '@bonham/track-map-utils'
 
 describe('TrackPointIndex', () => {
   test('first', () => {

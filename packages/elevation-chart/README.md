@@ -1,13 +1,13 @@
-# @trackmanager-lib/elevation-chart
+# @bonham/elevation-chart
 
 Interactive Vue 3 elevation profile chart with zoom, pan, two-finger pinch, and CursorSync integration.
 
-Built on [Chart.js 4](https://www.chartjs.org/) with a fully custom interaction layer. Displays a distance/elevation line and an optional coloured overlay (e.g. detected climbs). Hover position is shared with other components via `@trackmanager-lib/elevation-cursor-sync`.
+Built on [Chart.js 4](https://www.chartjs.org/) with a fully custom interaction layer. Displays a distance/elevation line and an optional coloured overlay (e.g. detected climbs). Hover position is shared with other components via `@bonham/elevation-cursor-sync`.
 
 ## Installation
 
 ```bash
-npm install @trackmanager-lib/elevation-chart @trackmanager-lib/elevation-cursor-sync
+npm install @bonham/elevation-chart @bonham/elevation-cursor-sync
 ```
 
 **Peer dependencies:** `vue ^3.5`, `chart.js ^4.5`
@@ -18,9 +18,9 @@ npm install @trackmanager-lib/elevation-chart @trackmanager-lib/elevation-cursor
 
 ```vue
 <script setup lang="ts">
-import { ElevationChart } from '@trackmanager-lib/elevation-chart'
-import { useCursorSync } from '@trackmanager-lib/elevation-cursor-sync'
-import type { TrackPoint } from '@trackmanager-lib/elevation-cursor-sync'
+import { ElevationChart } from '@bonham/elevation-chart'
+import { useCursorSync } from '@bonham/elevation-cursor-sync'
+import type { TrackPoint } from '@bonham/elevation-cursor-sync'
 
 const trackPoints: TrackPoint[] = /* ... equidistant, sorted by distance */
 const cursor = useCursorSync(trackPoints)
@@ -67,7 +67,7 @@ import {
   panEventHandler, // drag pan handler factory
   touchEventHandler, // touch pinch handler factory
   calcXPosition, // clientX → chart x-axis value
-} from "@trackmanager-lib/elevation-chart";
+} from "@bonham/elevation-chart";
 ```
 
 ### `stretchInterval(i_start, i_end, mid, factor, I_min?, I_max?, minLength?)`
@@ -75,7 +75,7 @@ import {
 Stretches or shrinks `[i_start, i_end]` around `mid` by `factor`. Result is clamped to `[I_min, I_max]` and will not shrink below `minLength`.
 
 ```ts
-import { stretchInterval } from "@trackmanager-lib/elevation-chart";
+import { stretchInterval } from "@bonham/elevation-chart";
 
 const { start, end } = stretchInterval(0, 100, 50, 0.5);
 // → { start: 25, end: 75 }  (zoom-in by 2×, centred at 50)
@@ -84,7 +84,7 @@ const { start, end } = stretchInterval(0, 100, 50, 0.5);
 ### `ZoomPanState`
 
 ```ts
-import { ZoomPanState } from "@trackmanager-lib/elevation-chart";
+import { ZoomPanState } from "@bonham/elevation-chart";
 
 const zs = new ZoomPanState(0.001, { start: 0, end: points.length - 1 });
 zs.zoomTransformation(event.deltaY, xPosition);
