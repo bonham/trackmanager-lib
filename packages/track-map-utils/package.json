@@ -1,5 +1,5 @@
 {
-  "name": "@trackmanager-lib/track-map-utils",
+  "name": "@bonham/track-map-utils",
   "version": "0.1.0",
   "description": "OpenLayers utilities for GPS track visualisation: spatial indexing, GeoJSON conversion, layer factories, zoom helpers",
   "type": "module",

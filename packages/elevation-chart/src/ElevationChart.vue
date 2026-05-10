@@ -10,7 +10,7 @@ import { createVerticalLinePlugin } from './lib/VerticalLinePlugin';
 import { ZoomPanState, type DataInterval } from './lib/ZoomState';
 import { wheelEventHandler, panEventHandler, calcXPosition, touchEventHandler } from './lib/eventHandlers';
 import { TransformPixelScale2ChartScale } from './lib/TransformPixelScale2ChartScale';
-import type { TrackPoint, CursorSync } from '@trackmanager-lib/elevation-cursor-sync';
+import type { TrackPoint, CursorSync } from '@bonham/elevation-cursor-sync';
 
 import { Chart } from 'chart.js/auto';
 

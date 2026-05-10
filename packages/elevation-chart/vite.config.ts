@@ -10,7 +10,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@trackmanager-lib/elevation-cursor-sync': resolve(__dirname, '../elevation-cursor-sync/src/index.ts'),
+      '@bonham/elevation-cursor-sync': resolve(__dirname, '../elevation-cursor-sync/src/index.ts'),
     },
   },
   build: {
@@ -21,7 +21,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['vue', 'chart.js', 'chart.js/auto', '@trackmanager-lib/elevation-cursor-sync'],
+      external: ['vue', 'chart.js', 'chart.js/auto', '@bonham/elevation-cursor-sync'],
       output: {
         globals: {
           vue: 'Vue',

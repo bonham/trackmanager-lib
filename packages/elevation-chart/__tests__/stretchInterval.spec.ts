@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { stretchInterval } from '@trackmanager-lib/elevation-chart'
+import { stretchInterval } from '@bonham/elevation-chart'
 
 describe('AppHelpers', () => {
   test('stretch_interval1', () => {

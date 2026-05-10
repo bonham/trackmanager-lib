@@ -1,4 +1,4 @@
-import { ZoomPanState } from '@trackmanager-lib/elevation-chart'
+import { ZoomPanState } from '@bonham/elevation-chart'
 import { beforeEach, describe, test, expect } from 'vitest'
 
 describe('ZoomState', () => {

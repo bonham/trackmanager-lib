@@ -5,7 +5,7 @@
     "target": "es2022",
     "lib": ["es2022", "dom"],
     "paths": {
-      "@trackmanager-lib/elevation-cursor-sync": ["../elevation-cursor-sync/src/index.ts"]
+      "@bonham/elevation-cursor-sync": ["../elevation-cursor-sync/src/index.ts"]
     }
   }
 }
