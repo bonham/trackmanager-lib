@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./packages/elevation-cursor-sync" },
+    { "path": "./packages/elevation-chart" },
+    { "path": "./packages/track-map-utils" }
+  ]
+}

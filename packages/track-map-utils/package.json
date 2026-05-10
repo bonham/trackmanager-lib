@@ -1,0 +1,40 @@
+{
+  "name": "@trackmanager-lib/track-map-utils",
+  "version": "0.1.0",
+  "description": "OpenLayers utilities for GPS track visualisation: spatial indexing, GeoJSON conversion, layer factories, zoom helpers",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "lint": "eslint .",
+    "type-check": "vue-tsc --noEmit -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "geokdbush": "^2.0.1",
+    "kdbush": "^4.0.2",
+    "ol": "^10.6.0"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.16",
+    "@types/geokdbush": "^1.1.5",
+    "@types/ol": "^6.5.3",
+    "vite": "^7.0.6",
+    "vite-plugin-dts": "^4.5.0",
+    "vue-tsc": "^3.0.4",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
