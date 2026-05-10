@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/elevation-cursor-sync" },
+    { "path": "./packages/elevation-chart" },
+    { "path": "./packages/track-map-utils" }
+  ]
+}

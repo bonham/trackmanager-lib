@@ -1,20 +1,26 @@
 {
-  "name": "@la-rampa/elevation-chart",
+  "name": "@trackmanager-lib/elevation-chart",
   "version": "0.1.0",
   "description": "Interactive Vue 3 elevation profile chart with zoom, pan, touch gestures, and CursorSync integration",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
     "build": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@la-rampa/elevation-cursor-sync": "0.1.0"
+    "@trackmanager-lib/elevation-cursor-sync": "0.1.0"
   },
   "peerDependencies": {
     "chart.js": "^4.5.0",
@@ -23,7 +29,11 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
     "vite": "^7.0.6",
+    "vite-plugin-dts": "^4.5.0",
     "vue-tsc": "^3.0.4",
     "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

@@ -1,13 +1,16 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({ rollupTypes: true }),
+  ],
   resolve: {
     alias: {
-      // Resolve sibling package from source during build
-      '@la-rampa/elevation-cursor-sync': resolve(__dirname, '../elevation-cursor-sync/src/index.ts'),
+      '@trackmanager-lib/elevation-cursor-sync': resolve(__dirname, '../elevation-cursor-sync/src/index.ts'),
     },
   },
   build: {
@@ -18,8 +21,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      // Peer dependencies — not bundled
-      external: ['vue', 'chart.js', 'chart.js/auto', '@la-rampa/elevation-cursor-sync'],
+      external: ['vue', 'chart.js', 'chart.js/auto', '@trackmanager-lib/elevation-cursor-sync'],
       output: {
         globals: {
           vue: 'Vue',

@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 
 export default defineConfig({
+  plugins: [
+    dts({ rollupTypes: true }),
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
@@ -10,7 +14,6 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      // All map and spatial libs are peer dependencies — keep them external
       external: ['ol', 'kdbush', 'geokdbush', 'geojson'],
       output: {
         globals: { ol: 'ol' },

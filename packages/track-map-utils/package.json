@@ -1,13 +1,19 @@
 {
-  "name": "@la-rampa/track-map-utils",
+  "name": "@trackmanager-lib/track-map-utils",
   "version": "0.1.0",
   "description": "OpenLayers utilities for GPS track visualisation: spatial indexing, GeoJSON conversion, layer factories, zoom helpers",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
     "build": "vite build",
@@ -23,7 +29,11 @@
     "@types/geokdbush": "^1.1.5",
     "@types/ol": "^6.5.3",
     "vite": "^7.0.6",
+    "vite-plugin-dts": "^4.5.0",
     "vue-tsc": "^3.0.4",
     "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

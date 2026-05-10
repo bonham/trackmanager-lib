@@ -1,9 +1,8 @@
 import { describe, test, expect } from 'vitest'
-import { TrackPointIndex } from '@la-rampa/track-map-utils'
+import { TrackPointIndex } from '@trackmanager-lib/track-map-utils'
 
-describe("TrackPointIndex", () => {
-  test("first", () => {
-
+describe('TrackPointIndex', () => {
+  test('first', () => {
     const p1 = {
       lon: 21.648141756981374,
       lat: 4.337979124072646
@@ -27,4 +26,3 @@ describe("TrackPointIndex", () => {
     expect(foundIdx).toBe(0)
   })
 })
-

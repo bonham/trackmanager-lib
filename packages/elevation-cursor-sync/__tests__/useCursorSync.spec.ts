@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { withSetup } from './testUtils'
-import { useCursorSync } from '@la-rampa/elevation-cursor-sync'
-import type { TrackPoint } from '@la-rampa/elevation-cursor-sync'
+import { useCursorSync } from '@trackmanager-lib/elevation-cursor-sync'
+import type { TrackPoint } from '@trackmanager-lib/elevation-cursor-sync'
 
 /**
  * Tests for the useCursorSync composable.
