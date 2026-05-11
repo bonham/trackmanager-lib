@@ -31,5 +31,10 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "typedocOptions": {
+    "entryPoints": [
+      "./src/index.ts"
+    ]
   }
 }

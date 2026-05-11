@@ -64,14 +64,26 @@ export class TransformPixelScale2ChartScale {
     this.pixelChartScalePoints = { p0, x0, p1, x1 }
   }
 
+  /**
+   * Record the chart data interval at the moment the pinch gesture started (`touchstart`).
+   * @param startInterval  Chart axis interval in data units at gesture start.
+   */
   setChartStartInterval(startInterval: DataInterval) {
     this.chartStartInterval = [startInterval.start, startInterval.end]
   }
 
+  /**
+   * Record the pixel interval between the two touch points at gesture start (`touchstart`).
+   * @param startInterval  `{ start: touches[0].clientX, end: touches[1].clientX }` at touchstart.
+   */
   setPixelStartInterval(startInterval: DataInterval) {
     this.pixelStartInterval = [startInterval.start, startInterval.end]
   }
 
+  /**
+   * Update the current touch-point interval on each `touchmove` frame.
+   * @param pinchedInterval  `{ start: touches[0].clientX, end: touches[1].clientX }` at touchmove.
+   */
   setPixelPinchedInterval(pinchedInterval: DataInterval) {
     this.pixelPinchedInterval = [pinchedInterval.start, pinchedInterval.end]
   }
