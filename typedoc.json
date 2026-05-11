@@ -1,0 +1,15 @@
+{
+  "name": "trackmanager-lib",
+  "entryPointStrategy": "packages",
+  "entryPoints": [
+    "packages/elevation-chart",
+    "packages/elevation-cursor-sync",
+    "packages/track-map-utils"
+  ],
+  "out": "docs",
+  "readme": "README.md",
+  "includeVersion": true,
+  "navigationLinks": {
+    "GitHub": "https://github.com/bonham000/trackmanager-lib"
+  }
+}
