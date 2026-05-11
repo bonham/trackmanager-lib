@@ -1,5 +1,21 @@
 # trackmanager-lib
 
+Vue 3 / OpenLayers monorepo for GPS track visualisation. Provides an interactive elevation profile chart, a distance-based cursor synchronisation composable, and OpenLayers map utilities — designed to work together or independently.
+
+## Packages
+
+### [@bonham/elevation-chart](packages/elevation-chart/README.md)
+
+Interactive Vue 3 elevation profile chart with zoom, pan, two-finger pinch, and cursor sync integration. Built on Chart.js 4 with a fully custom interaction layer; displays a distance/elevation line and an optional coloured overlay (e.g. detected climbs).
+
+### [@bonham/elevation-cursor-sync](packages/elevation-cursor-sync/README.md)
+
+Distance-based cursor synchronisation composable for Vue 3. A single `CursorSync` instance (created via `useCursorSync()`) is shared between the map, elevation chart, and any other components so that hovering in one updates all others reactively.
+
+### [@bonham/track-map-utils](packages/track-map-utils/README.md)
+
+Framework-agnostic OpenLayers utilities for GPS track display: spatial indexing for fast nearest-point lookup (`TrackPointIndex`), pre-configured vector layer factories (`getMapElements`), GeoJSON ↔ OpenLayers feature converters, a position marker helper (`MarkerOnTrack`), and a `zoomToTrack` fit helper.
+
 ## TypeScript configuration
 
 Two tsconfig files exist at the root:
