@@ -25,4 +25,24 @@ describe('TrackPointIndex', () => {
 
     expect(foundIdx).toBe(0)
   })
+
+  test('getNearestIndex returns null for empty index', () => {
+    const tpi = new TrackPointIndex([])
+    const result = tpi.getNearestIndex({ lon: 10, lat: 50 })
+    expect(result).toBeNull()
+  })
+
+  test('getNearestPoint returns the point object for the nearest index', () => {
+    const p1 = { lon: 8.0, lat: 48.0 }
+    const p2 = { lon: 9.0, lat: 49.0 }
+    const tpi = new TrackPointIndex([p1, p2])
+    const result = tpi.getNearestPoint({ lon: 8.1, lat: 48.1 })
+    expect(result).toEqual(p1)
+  })
+
+  test('getNearestPoint returns null for empty index', () => {
+    const tpi = new TrackPointIndex([])
+    const result = tpi.getNearestPoint({ lon: 10, lat: 50 })
+    expect(result).toBeNull()
+  })
 })
