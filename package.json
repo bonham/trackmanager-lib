@@ -13,8 +13,7 @@
     "coverage": "vitest run --coverage",
     "docs": "typedoc",
     "lint": "eslint .",
-    "type-check": "npm run type-check --workspaces --if-present",
-    "release": "bash scripts/release.sh"
+    "type-check": "npm run type-check --workspaces --if-present"
   },
   "devDependencies": {
     "@types/node": "^25.6.2",

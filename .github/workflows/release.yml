@@ -10,9 +10,11 @@ on:
         required: true
 
 jobs:
-  release:
+  create-release-pr:
     runs-on: ubuntu-latest
-    permissions: {}
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Ensure main branch
         run: |
@@ -22,8 +24,6 @@ jobs:
           fi
 
       - uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.RELEASE_PAT }}
 
       - uses: actions/setup-node@v6
         with:
@@ -35,4 +35,32 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - run: bash scripts/release.sh ${{ inputs.bump }}
+      - name: Compute new version
+        id: version
+        run: |
+          NEW=$(npm version ${{ inputs.bump }} --no-git-tag-version)
+          VERSION=${NEW#v}
+          git checkout package.json
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create release branch
+        run: git checkout -b release/v${{ steps.version.outputs.version }}
+
+      - name: Bump versions
+        run: bash scripts/release.sh ${{ steps.version.outputs.version }}
+
+      - name: Commit and push branch
+        run: |
+          git add package.json packages/*/package.json
+          git commit -m "chore: release v${{ steps.version.outputs.version }}"
+          git push origin release/v${{ steps.version.outputs.version }}
+
+      - name: Open PR
+        run: |
+          gh pr create \
+            --title "chore: release v${{ steps.version.outputs.version }}" \
+            --body "Automated version bump. Merge to trigger publish and docs." \
+            --base main \
+            --head release/v${{ steps.version.outputs.version }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
