@@ -29,8 +29,13 @@ echo "Releasing v$VERSION..."
 npm version "$VERSION" --workspaces --no-git-tag-version
 
 # Update internal cross-dependency: elevation-chart -> elevation-cursor-sync
-npm pkg set "dependencies.@bonham/elevation-cursor-sync=$VERSION" \
-  --workspace packages/elevation-chart
+node -e "
+const fs = require('fs');
+const p = 'packages/elevation-chart/package.json';
+const pkg = JSON.parse(fs.readFileSync(p));
+pkg.dependencies['@bonham/elevation-cursor-sync'] = '$VERSION';
+fs.writeFileSync(p, JSON.stringify(pkg, null, 2) + '\n');
+"
 
 # Commit, tag, push
 git add package.json packages/*/package.json
