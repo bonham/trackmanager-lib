@@ -25,8 +25,15 @@ fi
 
 echo "Releasing v$VERSION..."
 
-# Apply same version to all workspaces
-npm version "$VERSION" --workspaces --no-git-tag-version
+# Apply same version to all workspaces directly (avoids npm registry resolution)
+for pkg in packages/*/package.json; do
+  node -e "
+const fs = require('fs');
+const p = JSON.parse(fs.readFileSync('$pkg'));
+p.version = '$VERSION';
+fs.writeFileSync('$pkg', JSON.stringify(p, null, 2) + '\n');
+"
+done
 
 # Update internal cross-dependency: elevation-chart -> elevation-cursor-sync
 node -e "
