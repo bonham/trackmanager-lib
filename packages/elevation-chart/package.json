@@ -1,6 +1,6 @@
 {
   "name": "@bonham/elevation-chart",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Interactive Vue 3 elevation profile chart with zoom, pan, touch gestures, and CursorSync integration",
   "type": "module",
   "exports": {
@@ -21,7 +21,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@bonham/elevation-cursor-sync": "0.2.0"
+    "@bonham/elevation-cursor-sync": "0.3.0"
   },
   "peerDependencies": {
     "chart.js": "^4.5.0",
