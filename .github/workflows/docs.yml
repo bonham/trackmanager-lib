@@ -3,6 +3,7 @@ name: Docs
 on:
   push:
     tags: ['v*']
+  workflow_call:
 
 permissions:
   contents: read
