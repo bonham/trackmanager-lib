@@ -30,7 +30,7 @@ The workflow bumps all `packages/*/package.json` versions, commits, creates a `v
 - **Publish** — builds and publishes all packages to GitHub Packages
 - **Docs** — rebuilds and deploys the API docs to GitHub Pages
 
-> Requires `github-actions[bot]` to be added as a bypass actor in the `main` branch protection rule (Settings → Branches → your rule → Allow specified actors to bypass).
+> Requires a `RELEASE_PAT` repository secret: a fine-grained Personal Access Token scoped to this repo with **Contents: Read and write**. This allows the release workflow to push the version bump commit and tag to the protected `main` branch.
 
 ## Github pages
 
