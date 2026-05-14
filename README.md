@@ -16,6 +16,10 @@ Distance-based cursor synchronisation composable for Vue 3. A single `CursorSync
 
 Framework-agnostic OpenLayers utilities for GPS track display: spatial indexing for fast nearest-point lookup (`TrackPointIndex`), pre-configured vector layer factories (`getMapElements`), GeoJSON ↔ OpenLayers feature converters, a position marker helper (`MarkerOnTrack`), and a `zoomToTrack` fit helper.
 
+## Github pages
+
+https://bonham.github.io/trackmanager-lib/
+
 ## TypeScript configuration
 
 Two tsconfig files exist at the root:
