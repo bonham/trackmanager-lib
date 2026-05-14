@@ -25,12 +25,24 @@ fi
 
 echo "Releasing v$VERSION..."
 
-# Apply same version to all workspaces
-npm version "$VERSION" --workspaces --no-git-tag-version
+# Apply same version to all workspaces directly (avoids npm registry resolution)
+for pkg in packages/*/package.json; do
+  node -e "
+const fs = require('fs');
+const p = JSON.parse(fs.readFileSync('$pkg'));
+p.version = '$VERSION';
+fs.writeFileSync('$pkg', JSON.stringify(p, null, 2) + '\n');
+"
+done
 
 # Update internal cross-dependency: elevation-chart -> elevation-cursor-sync
-npm pkg set "dependencies.@bonham/elevation-cursor-sync=$VERSION" \
-  --workspace packages/elevation-chart
+node -e "
+const fs = require('fs');
+const p = 'packages/elevation-chart/package.json';
+const pkg = JSON.parse(fs.readFileSync(p));
+pkg.dependencies['@bonham/elevation-cursor-sync'] = '$VERSION';
+fs.writeFileSync(p, JSON.stringify(pkg, null, 2) + '\n');
+"
 
 # Commit, tag, push
 git add package.json packages/*/package.json

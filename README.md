@@ -16,6 +16,22 @@ Distance-based cursor synchronisation composable for Vue 3. A single `CursorSync
 
 Framework-agnostic OpenLayers utilities for GPS track display: spatial indexing for fast nearest-point lookup (`TrackPointIndex`), pre-configured vector layer factories (`getMapElements`), GeoJSON ↔ OpenLayers feature converters, a position marker helper (`MarkerOnTrack`), and a `zoomToTrack` fit helper.
 
+## Releasing
+
+All packages are versioned in lockstep. Releases are triggered via GitHub Actions — no local tooling required.
+
+1. Go to **Actions → Release → Run workflow**
+2. Select branch `main`
+3. Choose the increment: `patch` / `minor` / `major`
+4. Click **Run workflow**
+
+The workflow bumps all `packages/*/package.json` versions, commits, creates a `v*` tag, and pushes. This triggers:
+
+- **Publish** — builds and publishes all packages to GitHub Packages
+- **Docs** — rebuilds and deploys the API docs to GitHub Pages
+
+> Requires `github-actions[bot]` to be added as a bypass actor in the `main` branch protection rule (Settings → Branches → your rule → Allow specified actors to bypass).
+
 ## Github pages
 
 https://bonham.github.io/trackmanager-lib/
