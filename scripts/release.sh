@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION=$1
-if [[ -z "${VERSION:-}" ]]; then
-  echo "Usage: ./scripts/release.sh <version>  (e.g. 0.2.0)"
-  exit 1
-fi
-
-# Validate semver format
-if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?$ ]]; then
-  echo "Error: version must be semver (e.g. 1.2.3 or 1.2.3-beta.1)"
+BUMP=${1:-}
+if [[ "$BUMP" != "major" && "$BUMP" != "minor" && "$BUMP" != "patch" ]]; then
+  echo "Usage: ./scripts/release.sh major|minor|patch"
   exit 1
 fi
 
@@ -19,6 +13,10 @@ if ! git diff --quiet || ! git diff --cached --quiet; then
   exit 1
 fi
 
+# Let npm compute the incremented version on root, capture it
+NEW=$(npm version "$BUMP" --no-git-tag-version)
+VERSION=${NEW#v}  # strip leading 'v' that npm adds
+
 # Ensure tag doesn't already exist
 if git rev-parse "v$VERSION" >/dev/null 2>&1; then
   echo "Error: tag v$VERSION already exists"
@@ -27,7 +25,7 @@ fi
 
 echo "Releasing v$VERSION..."
 
-# Bump all workspace package versions
+# Apply same version to all workspaces
 npm version "$VERSION" --workspaces --no-git-tag-version
 
 # Update internal cross-dependency: elevation-chart -> elevation-cursor-sync
@@ -35,7 +33,7 @@ npm pkg set "dependencies.@bonham/elevation-cursor-sync=$VERSION" \
   --workspace packages/elevation-chart
 
 # Commit, tag, push
-git add packages/*/package.json
+git add package.json packages/*/package.json
 git commit -m "chore: release v$VERSION"
 git tag "v$VERSION"
 git push --follow-tags
