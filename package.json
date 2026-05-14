@@ -1,5 +1,6 @@
 {
   "name": "trackmanager-lib",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -12,7 +13,8 @@
     "coverage": "vitest run --coverage",
     "docs": "typedoc",
     "lint": "eslint .",
-    "type-check": "npm run type-check --workspaces --if-present"
+    "type-check": "npm run type-check --workspaces --if-present",
+    "release": "bash scripts/release.sh"
   },
   "devDependencies": {
     "@types/node": "^25.6.2",
