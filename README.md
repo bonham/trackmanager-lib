@@ -18,19 +18,17 @@ Framework-agnostic OpenLayers utilities for GPS track display: spatial indexing 
 
 ## Releasing
 
-All packages are versioned in lockstep. Releases are triggered via GitHub Actions — no local tooling required.
+All packages are versioned in lockstep. Releases go through a pull request — no local tooling or bypass actors required.
 
-1. Go to **Actions → Release → Run workflow**
-2. Select branch `main`
-3. Choose the increment: `patch` / `minor` / `major`
-4. Click **Run workflow**
+1. Go to **Actions → Release → Run workflow** (select `main`)
+2. Choose the increment: `patch` / `minor` / `major`
+3. Click **Run workflow** — this opens a PR titled `chore: release vX.Y.Z`
+4. Review and merge the PR
 
-The workflow bumps all `packages/*/package.json` versions, commits, creates a `v*` tag, and pushes. This triggers:
-
+Merging the PR triggers:
+- **Tag release** — automatically creates and pushes tag `vX.Y.Z`
 - **Publish** — builds and publishes all packages to GitHub Packages
 - **Docs** — rebuilds and deploys the API docs to GitHub Pages
-
-> Requires a `RELEASE_PAT` repository secret: a fine-grained Personal Access Token scoped to this repo with **Contents: Read and write**. This allows the release workflow to push the version bump commit and tag to the protected `main` branch.
 
 ## Github pages
 
