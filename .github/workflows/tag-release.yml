@@ -18,3 +18,18 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           git tag "v$VERSION"
           git push origin "v$VERSION"
+
+  publish:
+    needs: tag
+    uses: ./.github/workflows/publish.yml
+    permissions:
+      contents: read
+      packages: write
+
+  docs:
+    needs: tag
+    uses: ./.github/workflows/docs.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
