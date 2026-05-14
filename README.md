@@ -30,6 +30,13 @@ Merging the PR triggers:
 - **Publish** — builds and publishes all packages to GitHub Packages
 - **Docs** — rebuilds and deploys the API docs to GitHub Pages
 
+### One-time repository setup
+
+Two settings must be enabled for the release workflow to function:
+
+- **Settings → Actions → General → Workflow permissions** → enable "Allow GitHub Actions to create and approve pull requests"
+- **Settings → Rules → main ruleset → Bypass list** → add `github-actions[bot]` as a bypass actor (required for the tag push after PR merge)
+
 ## Github pages
 
 https://bonham.github.io/trackmanager-lib/
