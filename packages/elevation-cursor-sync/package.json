@@ -1,6 +1,6 @@
 {
   "name": "@bonham/elevation-cursor-sync",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Distance-based cursor synchronisation composable for Vue 3 track visualisation components",
   "type": "module",
   "exports": {
